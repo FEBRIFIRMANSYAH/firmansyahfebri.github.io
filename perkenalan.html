@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perkenalan Kreatif dan Beranimasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            animation: backgroundChange 10s infinite;
+        }
+        @keyframes backgroundChange {
+            0% { background: #667eea; }
+            25% { background: #764ba2; }
+            50% { background: #ff6f61; }
+            75% { background: #1fab89; }
+            100% { background: #667eea; }
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: slideInLeft 1s forwards;
+        }
+        .info {
+            font-size: 1em;
+            margin: 20px 0;
+        }
+        .highlight {
+            color: #ffdf00;
+            font-weight: bold;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #ffdf00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .button:hover {
+            background-color: #ffd700;
+            transform: scale(1.1);
+        }
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .language-selector label {
+            margin-right: 10px;
+        }
+        .language-selector select {
+            background: #ffdf00;
+            border: none;
+            padding: 10px;
+            color: #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <label for="language">Pilih Bahasa:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="id">Bahasa Indonesia</option>
+            <option value="su">Bahasa Sunda</option>
+            <option value="sb">Bahasa Surabaya</option>
+        </select>
+    </div>
+
+    <div class="container" id="container">
+        <img src="febri.jpeg" alt="FOTOKU">
+        <h1 id="header">Kenalan Rekkk!</h1>
+        <div class="info" id="info1"><span class="highlight" id="labelNama">Nama:</span> <span id="nama">Aku Febri Firmansyah</span> <button class="button" onclick="showNext(2)">Lanjut</button></div>
+        <div class="info" id="info2" style="display: none;"><span class="highlight" id="labelPanggilan">Panggilan:</span> <span id="panggilan">Biasanya dipanggil Febri</span> <button class="button" onclick="showNext(3)">Lanjut</button></div>
+        <div class="info" id="info3" style="display: none;"><span class="highlight" id="labelDepartemen">Asal Departemen:</span> <span id="departemen">Asal departemen Teknik Instrumentasi</span> <button class="button" onclick="showNext(4)">Lanjut</button></div>
+        <div class="info" id="info4" style="display: none;"><span class="highlight" id="labelKota">Asal Kota:</span> <span id="kota">Lahir di Jakarta gede di Cirebon</span> <button class="button" onclick="showNext(5)">Lanjut</button></div>
+        <div class="info" id="info5" style="display: none;"><span class="highlight" id="labelFunFact">Fun Fact:</span> <span id="funFact">Fun fact, aku ini anak Lanang</span> <button class="button" onclick="showNext(6)">Lanjut</button></div>
+        <div class="info" id="info6" style="display: none;"><span class="highlight" id="labelMBTI">MBTI:</span> <span id="mbti">MBTI-ku INTJ-T</span> <button class="button" onclick="showNext(7)">Lanjut</button></div>
+        <div class="info" id="info7" style="display: none;"><span class="highlight" id="labelHarapan">Harapan ke Depan:</span> <span id="harapan">Harapanku, Semoga kalian bisa sukses dan berkah di unit ini</span> <button class="button" onclick="showAlert()">Selesai</button></div>
+    </div>
+
+    <script>
+        let language = 'id';
+
+        function changeLanguage() {
+            language = document.getElementById('language').value;
+            updateContent();
+        }
+
+        function updateContent() {
+            const translations = {
+                id: {
+                    nama: "Aku Febri Firmansyah",
+                    panggilan: "Biasanya dipanggil Febri",
+                    departemen: "Asale departemen Teknik Instrumentasi",
+                    kota: "Lahir di Jakarta gede di Cirebon",
+                    funFact: "Fun fact, aku ini anak Lanang",
+                    mbti: "MBTI-ku INTJ-T",
+                    harapan: "Harapanku, Semoga kalian bisa sukses dan berkah di unit ini",
+                    header: "Kenalan Rekkk!"
+                },
+                su: {
+                    nama: "Abdi Febri Firmansyah",
+                    panggilan: "Kuring dipanggil Febri",
+                    departemen: "Asal ti departemen Teknik Instrumentasi",
+                    kota: "Lahir di Jakarta ageung di Cirebon",
+                    funFact: "Fun fact, abdi budak Lanang",
+                    mbti: "MBTI abdi INTJ-T",
+                    harapan: "Mugi-mugi abdi tiasa suksés sareng barokah di unit ieu",
+                    header: "Kenalan Rekkk!"
+                },
+                sb: {
+                    nama: "Aku iki Febri Firmansyah",
+                    panggilan: "Biasane dipanggil Febri",
+                    departemen: "Asale soko departemen Teknik Instrumentasi",
+                    kota: "Lahir di Jakarta gede nang Cirebon ",
+                    funFact: "Fun fact, aku iki anak Lanang",
+                    mbti: "MBTI-ku INJT-T",
+                    harapan: "Mugo-mugo aku iso sukses lan barokah nang unit iki",
+                    header: "Kenalan Rekkk!"
+                }
+            };
+
+            const content = translations[language];
+            document.getElementById('header').textContent = content.header;
+            document.getElementById('nama').textContent = content.nama;
+            document.getElementById('panggilan').textContent = content.panggilan;
+            document.getElementById('departemen').textContent = content.departemen;
+            document.getElementById('kota').textContent = content.kota;
+            document.getElementById('funFact').textContent = content.funFact;
+            document.getElementById('mbti').textContent = content.mbti;
+            document.getElementById('harapan').textContent = content.harapan;
+        }
+
+        function showNext(id) {
+            const currentInfo = document.getElementById('info' + (id - 1));
+            currentInfo.style.display = 'none';
+            const nextInfo = document.getElementById('info' + id);
+            nextInfo.style.display = 'block';
+        }
+
+        function showAlert() {
+            const alerts = {
+                id: "Matur nuwun sudah membaca perkenalan saya!",
+                su: "Hatur nuhun parantos maca perkenalan abdi!",
+                sb: "Matur suwun wis maca perkenalan aku!"
+            };
+            alert(alerts[language]);
+        }
+
+        // Initial display of the first info
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('info1').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
